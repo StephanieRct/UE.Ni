@@ -20,6 +20,8 @@
 // SOFTWARE.
 
 #pragma once
+#include "Modules/ModuleManager.h"
+
 #include "common.h"
 #include "Containers.h"
 #include "KContainers.h"
@@ -400,3 +402,12 @@ namespace NiT
 {
     template<> struct PropTraits<const Ni::ChunkStructure*> : public PropTraitsDefault2<Ni::ChunkStructure, const Ni::ChunkStructure*, DStructurePtr> {};
 }
+
+class FNiModule : public IModuleInterface
+{
+public:
+
+	/** IModuleInterface implementation */
+	virtual void StartupModule() override;
+	virtual void ShutdownModule() override;
+};

@@ -30,10 +30,10 @@
 #   endif
 namespace NiT
 {
-    UENI_API struct MemoryTracker
+    NI_API struct MemoryTracker
     {
     public:
-        UENI_API static MemoryTracker Instance;
+        NI_API static MemoryTracker Instance;
         struct Alloc
         {
             uint8* Base;

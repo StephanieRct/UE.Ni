@@ -12,7 +12,7 @@
 *
 */
 UCLASS()
-class UENI_API UNiAPI : public UEngineSubsystem
+class NI_API UNiAPI : public UEngineSubsystem
 {
     GENERATED_BODY()
 
