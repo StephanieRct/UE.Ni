@@ -1,0 +1,54 @@
+// MIT License
+// Copyright (c) 2025 Stephanie Rancourt
+
+#pragma once
+#include "common.h"
+#include "SetAlgorithmChunk.h"
+
+namespace NiT::Routing
+{
+    /// <summary>
+    /// Route an algorithm using the
+    /// </summary>
+    /// <typeparam name="TAlgorithm"></typeparam>
+    template<typename TAlgorithm>
+    struct AlgorithmRouterT : public AlgorithmRequirementFulfiller
+    {
+    public:
+        using Base_t = AlgorithmRequirementFulfiller;
+        using Self_t = AlgorithmRouterT<TAlgorithm>;
+        using Algorithm_t = TAlgorithm;
+
+    public:
+        /// <summary>
+        /// A AlgorithmCacheRouterT can be passed as an Algorithm inside a Pipeline so it must
+        /// passthrough the algorithm requirements.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="req"></param>
+        /// <returns></returns>
+        template<typename T>
+        bool Requirements(T req)
+        {
+            return ((TAlgorithm*)nullptr)->Requirements(req);
+        }
+
+        template<typename TContainer>
+        bool RouteAlgorithm(Algorithm_t& algorithm, TContainer& container) const
+        {
+            return algorithm.Requirements(SetAlgorithmChunk<TContainer>());
+        }
+
+        template<typename TContainer>
+        bool TryRun(const Algorithm_t& algorithm, TContainer& container) const
+        {
+            return algorithm.TryRun(*this, container);
+        }
+
+        template<typename TContainer>
+        void Run(const Algorithm_t& algorithm, TContainer& container) const
+        {
+            algorithm.Run(*this, container);
+        }
+    };
+}
