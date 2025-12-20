@@ -383,12 +383,12 @@ namespace NiT
         template<typename TSize> struct SelectProp<NodeCapacityPerChunkT<TSize>> : public SelectPropDefault<NodeCapacityPerChunkT<TSize>> {};
         template<typename TSize> struct SelectProp<NodeCountPerChunkT<   TSize>> : public SelectPropDefault<NodeCountPerChunkT<   TSize>> {};
     }
-    template<typename TSize, typename TIn> NodeCapacityT<        TSize> PropNodeCapacityT(        const TIn& a) { return Selectors::SelectProp<TIn>::GetProp<NodeCapacityT<        TSize>>(a); }
-    template<typename TSize, typename TIn> NodeCountT<           TSize> PropNodeCountT(           const TIn& a) { return Selectors::SelectProp<TIn>::GetProp<NodeCountT<           TSize>>(a); }
-    template<typename TSize, typename TIn> ChunkCapacityT<       TSize> PropChunkCapacityT(       const TIn& a) { return Selectors::SelectProp<TIn>::GetProp<ChunkCapacityT<       TSize>>(a); }
-    template<typename TSize, typename TIn> ChunkCountT<          TSize> PropChunkCountT(          const TIn& a) { return Selectors::SelectProp<TIn>::GetProp<ChunkCountT<          TSize>>(a); }
-    template<typename TSize, typename TIn> NodeCapacityPerChunkT<TSize> PropNodeCapacityPerChunkT(const TIn& a) { return Selectors::SelectProp<TIn>::GetProp<NodeCapacityPerChunkT<TSize>>(a); }
-    template<typename TSize, typename TIn> NodeCountPerChunkT<   TSize> PropNodeCountPerChunkT(   const TIn& a) { return Selectors::SelectProp<TIn>::GetProp<NodeCountPerChunkT<   TSize>>(a); }
+    template<typename TSize, typename TIn> NodeCapacityT<        TSize> PropNodeCapacityT(        const TIn& a) { return Selectors::SelectProp<TIn>::template GetProp<NodeCapacityT<        TSize>>(a); }
+    template<typename TSize, typename TIn> NodeCountT<           TSize> PropNodeCountT(           const TIn& a) { return Selectors::SelectProp<TIn>::template GetProp<NodeCountT<           TSize>>(a); }
+    template<typename TSize, typename TIn> ChunkCapacityT<       TSize> PropChunkCapacityT(       const TIn& a) { return Selectors::SelectProp<TIn>::template GetProp<ChunkCapacityT<       TSize>>(a); }
+    template<typename TSize, typename TIn> ChunkCountT<          TSize> PropChunkCountT(          const TIn& a) { return Selectors::SelectProp<TIn>::template GetProp<ChunkCountT<          TSize>>(a); }
+    template<typename TSize, typename TIn> NodeCapacityPerChunkT<TSize> PropNodeCapacityPerChunkT(const TIn& a) { return Selectors::SelectProp<TIn>::template GetProp<NodeCapacityPerChunkT<TSize>>(a); }
+    template<typename TSize, typename TIn> NodeCountPerChunkT<   TSize> PropNodeCountPerChunkT(   const TIn& a) { return Selectors::SelectProp<TIn>::template GetProp<NodeCountPerChunkT<   TSize>>(a); }
 
     /// <summary>
     /// Append Prop decorator only if props doesn't have the decorator present.
